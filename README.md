@@ -1,6 +1,6 @@
 # Edge_detection
 Beadando
 
-Outlines red stuff with openCV
+Outlining red stuff on a picture with openCV
 
-imports cv2 and numpy
+imports cv2, numpy and os
