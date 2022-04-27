@@ -67,13 +67,15 @@ class Beadando:
     def edge(self, name, img, show_img=True):
         self.edges = cv2.Canny(img, 100, 200, None, 5, True)
         if show_img:
-            cv2.imshow(name, self.edges)
+            pass
+            #cv2.imshow(name, self.edges)
 
     def korvonal(self, name, img, show_img=True):
         self.img_np_edge = self.img.copy()
         self.img_np_edge[img > 0] = self.outline_color
         if show_img:
             cv2.imshow(name, self.img_np_edge)
+            cv2.waitKey(0)
 
     def save_result(self, name, file):
         cv2.imwrite(name, file)
@@ -84,9 +86,9 @@ class Beadando:
         self.blur("gauss", self.a, False)
         self.split_n_merge("merged", self.imgLab, False)
         # self.segment("segment", self.merged)
-        self.segment("segment2", self.merged, False)
+        self.segment("segment2", self.merged)
         self.edge("edge", self.im_thresh)
-        self.korvonal("result", self.edges)
+        self.korvonal("result", self.im_thresh)
         self.save_result(self.output_picture, self.img_np_edge)
 
         cv2.waitKey(0)
